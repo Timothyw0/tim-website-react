@@ -11,17 +11,24 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
 
 interface NavLinkProps {
   action?: string;
   children: React.ReactNode;
+  path?: string;
 }
 
-const Links = ["Home", "Experience", "Portfolio", "Contact Links"];
+const Links = [
+  { text: "Home", path: "/home" },
+  { text: "Experience", path: "/experience" },
+  { text: "Portfolio", path: "/portfolio" },
+];
 
 const NavLink = (props: NavLinkProps) => {
-  const { action, children } = props;
+  const { action, children, path } = props;
   const { colorMode, toggleColorMode } = useColorMode();
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -33,9 +40,11 @@ const NavLink = (props: NavLinkProps) => {
         textDecoration: "none",
         textColor: colorMode === "light" ? "black" : "white",
         bg: useColorModeValue("gray.200", "gray.700"),
+        cursor: "pointer",
       }}
       onClick={() => {
         action === "switchMode" && toggleColorMode();
+        path && navigate(path);
       }}
     >
       {children}
@@ -48,7 +57,15 @@ const Navbar = () => {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Box
+        bg={useColorModeValue("gray.100", "gray.900")}
+        px={4}
+        position="fixed"
+        top={0}
+        right={0}
+        left={0}
+        zIndex={10}
+      >
         <Flex h={16} alignItems="center" justifyContent="space-between">
           <IconButton
             size={"md"}
@@ -69,7 +86,9 @@ const Navbar = () => {
               display={{ base: "none", md: "flex" }}
             >
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link.text} path={link.path}>
+                  {link.text}
+                </NavLink>
               ))}
               <NavLink action="switchMode">
                 <MoonIcon />
@@ -87,7 +106,9 @@ const Navbar = () => {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link.text} path={link.path}>
+                  {link.text}
+                </NavLink>
               ))}
               <NavLink action="switchMode">
                 <MoonIcon />

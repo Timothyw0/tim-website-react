@@ -1,6 +1,5 @@
 import "./App.css";
 import { Container, useColorMode } from "@chakra-ui/react";
-import Navbar from "./components/Navbar";
 import Routes from "./routes/Routes";
 
 function App() {
@@ -9,7 +8,8 @@ function App() {
   return (
     <Container
       minHeight="100vh"
-      minWidth="100vw"
+      width="100vw"
+      maxWidth="none"
       p={0}
       backgroundColor={colorMode === "light" ? "#ffffff" : "#0E0E0E"}
       backgroundImage={
@@ -18,7 +18,6 @@ function App() {
           : "linear-gradient(180deg, #0e0e0e 0%, #36396f 50%, #7e7fa4 100%)"
       }
     >
-      <Navbar />
       <Routes />
     </Container>
   );
