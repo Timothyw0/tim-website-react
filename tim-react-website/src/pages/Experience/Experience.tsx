@@ -48,7 +48,7 @@ const ExperienceCard = (props: CardProps) => {
   }
 
   return (
-    <Center py={12}>
+    <Center py={12} w="50%">
       <Box
         role={"group"}
         p={6}
@@ -95,61 +95,63 @@ const Experience = () => {
         <Heading display="inline-block" as="h2" size="xl">
           Work Experience
         </Heading>
-        <Stack direction={{ base: "column", md: "row" }}>
-          <Flex flex={1} align="center" justify="center">
-            <ExperienceCard
-              header="Bank of America"
-              subtext={[
-                "Assistant Vice President - Software Engineer II",
-                "In supporting Global Compliance & Operational Risk technology, I am a lead software engineer in a ReactJS rewrite of a legacy AngularJS application. My experience encompasses feature development, unit testing, UI optimization, code reviews, agile demos, cross-team collaboration, and creating reusable React component-based architecture.",
-              ]}
-              type="work"
-            />
-          </Flex>
-          <Flex flex={1} align="center" justify="center">
-            <ExperienceCard
-              header="Bank of America"
-              subtext={[
-                "Officer - Solution Architect",
-                "As a Solution Architect, I drove new initiatives to improving efficiency in our line of business. My projects were migrating an Oracle Exadata database into a Hadoop data lake in addition to pySpark processes to replace a vendor-based solution, API layer development using MuleSoft, and Machine Learning algorithms in order to reduce the number of false positive alerts that are generated in Trade Surveillances.",
-              ]}
-              type="work"
-            />
-          </Flex>
+        <Stack
+          spacing={8}
+          direction={{ base: "column", md: "row" }}
+          justifyContent="space-evenly"
+        >
+          <ExperienceCard
+            header="Bank of America"
+            subtext={[
+              "Assistant Vice President - Software Engineer II",
+              "In supporting Global Compliance & Operational Risk technology, I am a lead software engineer in a ReactJS rewrite of a legacy AngularJS application. My experience encompasses feature development, unit testing, UI optimization, code reviews, agile demos, cross-team collaboration, and creating reusable React component-based architecture.",
+            ]}
+            type="work"
+          />
+          <ExperienceCard
+            header="Bank of America"
+            subtext={[
+              "Officer - Solution Architect",
+              "As a Solution Architect, I drove new initiatives to improving efficiency in our line of business. My projects were migrating an Oracle Exadata database into a Hadoop data lake in addition to pySpark processes to replace a vendor-based solution, API layer development using MuleSoft, and Machine Learning algorithms in order to reduce the number of false positive alerts that are generated in Trade Surveillances.",
+            ]}
+            type="work"
+          />
         </Stack>
-        <Stack direction={{ base: "column", md: "row" }}>
-          <Flex flex={1} align="center" justify="center">
-            <ExperienceCard
-              header="Bank of America"
-              subtext={[
-                "Global Summer Technology Analyst",
-                "I supported Bank of America's DQC (Data Quality Controls) team and implemented a new framework for data lineage parsing within an automated data control process. Using Python, I created multiple parsers to gather data lineage from the metadata of various reporting tools such as Cognos, Tableau, and Microstrategy. During this experience, I familiarized myself with many ETL and reporting tools used in data analytics.",
-              ]}
-              type="work"
-            />
-          </Flex>
-          <Flex flex={1} align="center" justify="center">
-            <ExperienceCard
-              header="Rensselaer Polytechnic Institute"
-              subtext={[
-                "C-STEM Software Developer",
-                "I participated in Rensselaer's Computer Science Undergraduate Research program that partnered with STEM teaching in schools in Troy, NY. C-STEM was a program designed for high school students to learn about the environment through technology. I assisted in developing a Python API for sensors to upload live environmental data to a Django database that was then displayed on a user interface.",
-              ]}
-              type="work"
-            />
-          </Flex>
+        <Stack
+          spacing={8}
+          direction={{ base: "column", md: "row" }}
+          justifyContent="space-evenly"
+        >
+          <ExperienceCard
+            header="Bank of America"
+            subtext={[
+              "Global Summer Technology Analyst",
+              "I supported Bank of America's DQC (Data Quality Controls) team and implemented a new framework for data lineage parsing within an automated data control process. Using Python, I created multiple parsers to gather data lineage from the metadata of various reporting tools such as Cognos, Tableau, and Microstrategy. During this experience, I familiarized myself with many ETL and reporting tools used in data analytics.",
+            ]}
+            type="work"
+          />
+          <ExperienceCard
+            header="Rensselaer Polytechnic Institute"
+            subtext={[
+              "C-STEM Software Developer",
+              "I participated in Rensselaer's Computer Science Undergraduate Research program that partnered with STEM teaching in schools in Troy, NY. C-STEM was a program designed for high school students to learn about the environment through technology. I assisted in developing a Python API for sensors to upload live environmental data to a Django database that was then displayed on a user interface.",
+            ]}
+            type="work"
+          />
         </Stack>
-        <Stack direction={{ base: "column", md: "row" }}>
-          <Flex flex={1} align="center" justify="center">
-            <ExperienceCard
-              header="Lockheed Martin"
-              subtext={[
-                "College Student Technical Senior Intern",
-                "I was a part of Rotary Mission Systems Technology and worked on the Aegis BMD (Ballistic Missile Defense) system's Mission Planner. I upgraded and integrated test suites in its automated testing software using Python and Robot Framework. Throughout the summer, I performed various regression, integration, and smoke testing for new capabilities of each release. In addition, I refactored many server-side Java files to adapt to new technologies aboard Navy ships.",
-              ]}
-              type="work"
-            />
-          </Flex>
+        <Stack
+          spacing={8}
+          direction={{ base: "column", md: "row" }}
+          justifyContent="space-evenly"
+        >
+          <ExperienceCard
+            header="Lockheed Martin"
+            subtext={[
+              "College Student Technical Senior Intern",
+              "I was a part of Rotary Mission Systems Technology and worked on the Aegis BMD (Ballistic Missile Defense) system's Mission Planner. I upgraded and integrated test suites in its automated testing software using Python and Robot Framework. Throughout the summer, I performed various regression, integration, and smoke testing for new capabilities of each release. In addition, I refactored many server-side Java files to adapt to new technologies aboard Navy ships.",
+            ]}
+            type="work"
+          />
         </Stack>
       </Box>
 
@@ -190,9 +192,12 @@ const Experience = () => {
         <Heading display="inline-block" as="h2" size="xl">
           Education
         </Heading>
-      </Box>
-      <Stack direction={{ base: "column", md: "row" }} pb="100px">
-        <Flex flex={1} align="center" justify="center">
+        <Stack
+          spacing={8}
+          direction={{ base: "column", md: "row" }}
+          justifyContent="space-evenly"
+          pb={100}
+        >
           <ExperienceCard
             header="Stevens Institute of Technology"
             subtext={[
@@ -202,8 +207,6 @@ const Experience = () => {
             ]}
             type="education"
           />
-        </Flex>
-        <Flex flex={1} align="center" justify="center">
           <ExperienceCard
             header="Rensselaer Polytechnic Institute"
             subtext={[
@@ -213,8 +216,8 @@ const Experience = () => {
             ]}
             type="education"
           />
-        </Flex>
-      </Stack>
+        </Stack>
+      </Box>
     </PageSkeleton>
   );
 };
