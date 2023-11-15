@@ -1,18 +1,11 @@
 import {
   Avatar,
   Box,
-  Button,
   Flex,
   HStack,
   Heading,
   IconButton,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
   Stack,
-  Text,
   useColorMode,
   useColorModeValue,
   useDisclosure,
@@ -24,7 +17,7 @@ interface NavLinkProps {
   children: React.ReactNode;
 }
 
-const Links = ["Home", "About Me", "Experience", "Portfolio"];
+const Links = ["Home", "Experience", "Portfolio", "Contact Links"];
 
 const NavLink = (props: NavLinkProps) => {
   const { action, children } = props;
@@ -41,7 +34,6 @@ const NavLink = (props: NavLinkProps) => {
         textColor: colorMode === "light" ? "black" : "white",
         bg: useColorModeValue("gray.200", "gray.700"),
       }}
-      href={"#"}
       onClick={() => {
         action === "switchMode" && toggleColorMode();
       }}

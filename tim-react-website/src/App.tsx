@@ -1,36 +1,26 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import { Container, useColorMode } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
+import Routes from "./routes/Routes";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { colorMode } = useColorMode();
 
   return (
-    <>
+    <Container
+      minHeight="100vh"
+      minWidth="100vw"
+      p={0}
+      backgroundColor={colorMode === "light" ? "#ffffff" : "#0E0E0E"}
+      backgroundImage={
+        colorMode === "light"
+          ? "linear-gradient(180deg, #ffffff 0%, #7e7fa4 50%, #baded9 100%)"
+          : "linear-gradient(180deg, #0e0e0e 0%, #36396f 50%, #8bd6cb 100%)"
+      }
+    >
       <Navbar />
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <Routes />
+    </Container>
   );
 }
 
