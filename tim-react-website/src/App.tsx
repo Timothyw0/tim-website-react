@@ -15,7 +15,7 @@ function App() {
       backgroundImage={
         colorMode === "light"
           ? "linear-gradient(180deg, #ffffff 0%, #7e7fa4 50%, #baded9 100%)"
-          : "linear-gradient(180deg, #0e0e0e 0%, #36396f 50%, #8bd6cb 100%)"
+          : "linear-gradient(180deg, #0e0e0e 0%, #36396f 50%, #7e7fa4 100%)"
       }
     >
       <Navbar />
