@@ -25,7 +25,7 @@ const Portfolio = () => {
           role={"group"}
           p={6}
           h="300px"
-          w="500px"
+          w={{ base: "500px", md: "400px" }}
           maxWidth="100vw"
           bg={useColorModeValue("white", "gray.800")}
           boxShadow={"2xl"}
