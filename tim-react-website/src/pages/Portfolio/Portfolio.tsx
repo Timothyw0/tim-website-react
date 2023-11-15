@@ -58,9 +58,9 @@ const Portfolio = () => {
     <PageSkeleton>
       <Box textAlign="center" py={100} px={6}>
         <Heading display="inline-block" as="h2" size="xl">
-          Work Experience
+          My Projects
         </Heading>
-        <Stack direction={{ base: "column", md: "row" }}>
+        <Stack direction={{ base: "column", lg: "row" }}>
           <Flex flex={1} align="center" justify="center">
             <PortfolioCard
               header="Personal Profile"
@@ -79,7 +79,7 @@ const Portfolio = () => {
             />
           </Flex>
         </Stack>
-        <Stack direction={{ base: "column", md: "row" }}>
+        <Stack direction={{ base: "column", lg: "row" }}>
           <Flex flex={1} align="center" justify="center">
             <PortfolioCard
               header="Wang Family Tree"
@@ -104,7 +104,7 @@ const Portfolio = () => {
             />
           </Flex>
         </Stack>
-        <Stack direction={{ base: "column", md: "row" }}>
+        <Stack direction={{ base: "column", lg: "row" }}>
           <Flex flex={1} align="center" justify="center">
             <PortfolioCard
               header="Simple Shell (sish)"
