@@ -1,7 +1,6 @@
 import {
   Box,
   Center,
-  Flex,
   Heading,
   Image,
   Stack,
@@ -48,7 +47,7 @@ const ExperienceCard = (props: CardProps) => {
   }
 
   return (
-    <Center py={12} w="50%">
+    <Center py={12} w={{ base: "100%", md: "50%" }}>
       <Box
         role={"group"}
         p={6}
