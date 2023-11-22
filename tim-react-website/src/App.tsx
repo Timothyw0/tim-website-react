@@ -8,8 +8,9 @@ function App() {
   return (
     <Container
       minHeight="100vh"
-      width="100vw"
+      width="100%"
       maxWidth="none"
+      margin="0 17px 0 0"
       p={0}
       backgroundColor={colorMode === "light" ? "#ffffff" : "#0E0E0E"}
       backgroundImage={
