@@ -98,7 +98,7 @@ const Navbar = () => {
           <Flex alignItems="center">
             <Avatar
               size="md"
-              src="https://media.licdn.com/dms/image/C5603AQGFoEYhXtkaiw/profile-displayphoto-shrink_800_800/0/1592782396048?e=1705536000&v=beta&t=QBf5w8Oct5IZiiq_4rc983Y5CSkcLf4AFsejtuCK-ew"
+              src="https://media.licdn.com/dms/image/D4E03AQGVRDYtw4Bvow/profile-displayphoto-shrink_800_800/0/1701993924474?e=1708560000&v=beta&t=An39BMo1tLGJy8U_hDFylDpwNaMfYKLkd5RjpE3gJao"
             />
           </Flex>
         </Flex>
