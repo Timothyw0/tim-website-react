@@ -61,8 +61,8 @@ const Footer = () => {
         align={{ base: "center", md: "center" }}
       >
         <Text>
-          {new Date().getFullYear()} - This website is deployed with Google
-          Firebase
+          {new Date().getFullYear()} - This website is deployed with Azure
+          Static Web Apps
         </Text>
         <Stack direction={"row"} spacing={6}>
           <SocialButton label={"Email"} href={"mailto:timothyw0@gmail.com"}>
