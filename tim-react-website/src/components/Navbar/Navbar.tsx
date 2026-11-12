@@ -1,54 +1,47 @@
 import {
-  Avatar,
   Box,
   Flex,
   HStack,
-  Heading,
   IconButton,
   Stack,
   useColorMode,
-  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, MoonIcon } from "@chakra-ui/icons";
-import { useNavigate } from "react-router-dom";
+import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { NavLink as RouterLink } from "react-router-dom";
 
-interface NavLinkProps {
-  action?: string;
-  children: React.ReactNode;
-  path?: string;
-}
-
-const Links = [
+const links = [
   { text: "Home", path: "/home" },
   { text: "Experience", path: "/experience" },
   { text: "Portfolio", path: "/portfolio" },
 ];
 
-const NavLink = (props: NavLinkProps) => {
-  const { action, children, path } = props;
+const NavigationLinks = ({ onNavigate }: { onNavigate?: () => void }) => (
+  <>
+    {links.map((link) => (
+      <RouterLink
+        key={link.text}
+        to={link.path}
+        onClick={onNavigate}
+        className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
+      >
+        {link.text}
+      </RouterLink>
+    ))}
+  </>
+);
+
+const ThemeToggle = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const navigate = useNavigate();
 
   return (
-    <Box
-      as="a"
-      px={2}
-      py={1}
-      rounded={"md"}
-      _hover={{
-        textDecoration: "none",
-        textColor: colorMode === "light" ? "black" : "white",
-        bg: useColorModeValue("gray.200", "gray.700"),
-        cursor: "pointer",
-      }}
-      onClick={() => {
-        action === "switchMode" && toggleColorMode();
-        path && navigate(path);
-      }}
-    >
-      {children}
-    </Box>
+    <IconButton
+      className="theme-toggle"
+      variant="ghost"
+      aria-label={`Switch to ${colorMode === "light" ? "dark" : "light"} mode`}
+      icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+      onClick={toggleColorMode}
+    />
   );
 };
 
@@ -56,68 +49,52 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <>
-      <Box
-        bg={useColorModeValue("gray.100", "gray.900")}
-        px={4}
-        position="fixed"
-        top={0}
-        right={0}
-        left={0}
-        zIndex={10}
-      >
-        <Flex h={16} alignItems="center" justifyContent="space-between">
-          <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          />
-          <HStack spacing={8} alignItems={"center"}>
-            <Box>
-              <Heading as="h1" size="lg">
-                Timothy Wang
-              </Heading>
-            </Box>
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}
-            >
-              {Links.map((link) => (
-                <NavLink key={link.text} path={link.path}>
-                  {link.text}
-                </NavLink>
-              ))}
-              <NavLink action="switchMode">
-                <MoonIcon />
-              </NavLink>
-            </HStack>
-          </HStack>
-          <Flex alignItems="center">
-            <Avatar
-              size="md"
-              src="https://media.licdn.com/dms/image/D4E03AQGVRDYtw4Bvow/profile-displayphoto-shrink_800_800/0/1701993924474?e=1708560000&v=beta&t=An39BMo1tLGJy8U_hDFylDpwNaMfYKLkd5RjpE3gJao"
-            />
-          </Flex>
-        </Flex>
-        {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link.text} path={link.path}>
-                  {link.text}
-                </NavLink>
-              ))}
-              <NavLink action="switchMode">
-                <MoonIcon />
-              </NavLink>
-            </Stack>
+    <Box as="header" className="site-header">
+      <Flex className="nav-inner" align="center" justify="space-between">
+        <RouterLink to="/home" className="brand-link">
+          <Box as="span" className="brand-mark" aria-hidden="true">
+            TW
           </Box>
-        ) : null}
-      </Box>
-    </>
+          <Box as="span" className="brand-name">
+            Timothy Wang
+          </Box>
+        </RouterLink>
+
+        <HStack
+          className="nav-links"
+          as="nav"
+          aria-label="Main navigation"
+          display={{ base: "none", md: "flex" }}
+        >
+          <NavigationLinks />
+          <ThemeToggle />
+        </HStack>
+
+        <IconButton
+          className="mobile-menu-button"
+          display={{ base: "inline-flex", md: "none" }}
+          variant="ghost"
+          size="md"
+          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          onClick={isOpen ? onClose : onOpen}
+        />
+      </Flex>
+
+      {isOpen && (
+        <Stack
+          className="mobile-nav"
+          as="nav"
+          display={{ base: "flex", md: "none" }}
+          aria-label="Mobile navigation"
+          spacing={2}
+        >
+          <NavigationLinks onNavigate={onClose} />
+          <ThemeToggle />
+        </Stack>
+      )}
+    </Box>
   );
 };
 

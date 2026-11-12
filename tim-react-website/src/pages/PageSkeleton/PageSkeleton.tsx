@@ -12,7 +12,9 @@ const PageSkeleton = (props: Props) => {
   return (
     <>
       <Navbar />
-      <Box pt={50}>{children}</Box>
+      <Box as="main" className="page-content">
+        {children}
+      </Box>
       <Footer />
     </>
   );
