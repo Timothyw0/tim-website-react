@@ -4,7 +4,6 @@ import {
   Container,
   Stack,
   Text,
-  useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
 import { MdEmail } from "react-icons/md";
@@ -20,20 +19,14 @@ const SocialButton = (props: ButtonProps) => {
   const { children, label, href } = props;
   return (
     <chakra.button
-      bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
-      rounded={"full"}
-      w={8}
-      h={8}
+      className="social-link"
       cursor={"pointer"}
       as={"a"}
       href={href}
       display={"inline-flex"}
       alignItems={"center"}
       justifyContent={"center"}
-      transition={"background 0.3s ease"}
-      _hover={{
-        bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
-      }}
+      aria-label={label}
     >
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}
@@ -43,24 +36,17 @@ const SocialButton = (props: ButtonProps) => {
 
 const Footer = () => {
   return (
-    <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
-      position="absolute"
-      left={0}
-      right={0}
-      bottom={0}
-    >
+    <Box as="footer" className="site-footer">
       <Container
         as={Stack}
-        maxW={"6xl"}
-        py={4}
+        className="footer-inner"
+        maxW="none"
         direction={{ base: "column", md: "row" }}
         spacing={4}
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Text>
+        <Text className="footer-copy">
           {new Date().getFullYear()} - This website is deployed with Google
           Firebase
         </Text>

@@ -1,134 +1,106 @@
+import { Box, Heading, Stack, Text } from "@chakra-ui/react";
 import PageSkeleton from "../PageSkeleton";
-import {
-  Center,
-  Box,
-  Flex,
-  Stack,
-  Heading,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
 
-interface CardProps {
+interface Project {
   header: string;
-  link: Array<string>;
-  subtext: Array<string>;
+  link: string[];
+  subtext: string[];
 }
 
-const Portfolio = () => {
-  const PortfolioCard = (props: CardProps) => {
-    const { header, link, subtext } = props;
+const projects: Project[] = [
+  {
+    header: "Personal Profile",
+    subtext: ["Built with Vite + ReactJS + TypeScript"],
+    link: ["https://github.com/Timothyw0/tim-website-react"],
+  },
+  {
+    header: "Wedding Website",
+    subtext: ["Built with Vite + ReactJS + Google Firestore"],
+    link: [
+      "https://github.com/Timothyw0/react-wedding",
+      "https://madeleineandtim2023.com",
+    ],
+  },
+  {
+    header: "Wang Family Tree",
+    subtext: [
+      "Built with Vite + ReactJS + TypeScript frontend",
+      "NodeJS + Express + MongoDB backend",
+    ],
+    link: [
+      "https://github.com/Timothyw0/Wang-Family-Tree",
+      "https://wang-family-tree.web.app/",
+    ],
+  },
+  {
+    header: "Wedd.io",
+    subtext: [
+      "CS554 Final Project",
+      "MERN stack + AWS S3 + Google Firebase Authentication",
+    ],
+    link: ["https://github.com/JInsalaco/CS554_Good_Nodels"],
+  },
+  {
+    header: "Simple Shell (sish)",
+    subtext: ["CS615 Final Project", "Simple UNIX shell written in C"],
+    link: ["https://github.com/Timothyw0/apue-sish"],
+  },
+  {
+    header: "AWS EBS Backup",
+    subtext: [
+      "CS554 Assignment",
+      "Bash script that performs backups into an AWS EBS",
+    ],
+    link: ["https://github.com/Timothyw0/ebs-backup"],
+  },
+];
 
-    return (
-      <Center py={12}>
-        <Box
-          role={"group"}
-          p={6}
-          h="300px"
-          w={{ base: "500px", md: "400px" }}
-          maxWidth="100vw"
-          bg={useColorModeValue("white", "gray.800")}
-          boxShadow={"2xl"}
-          rounded={"lg"}
-          pos={"relative"}
-          zIndex={1}
-        >
-          <Stack pt={10} align={"center"}>
-            <Heading fontSize={"2xl"} fontWeight={500}>
-              {header}
-            </Heading>
-            <Stack align={"center"}>
-              {subtext.map((txt) => (
-                <Text fontWeight={500} fontSize="medium">
-                  {txt}
-                </Text>
-              ))}
-              {link.map((url) => (
-                <a href={url} target="_blank">
-                  {url}
-                </a>
-              ))}
-            </Stack>
-          </Stack>
-        </Box>
-      </Center>
-    );
-  };
-  return (
-    <PageSkeleton>
-      <Box textAlign="center" py={100} px={6}>
-        <Heading display="inline-block" as="h2" size="xl">
+const PortfolioCard = ({ header, link, subtext }: Project) => (
+  <Box className="portfolio-card">
+    <Stack height="100%" align="flex-start" spacing={4}>
+      <Heading className="portfolio-card-title" as="h2">
+        {header}
+      </Heading>
+      <Stack align="flex-start" spacing={2}>
+        {subtext.map((text) => (
+          <Text className="portfolio-description" key={text}>
+            {text}
+          </Text>
+        ))}
+      </Stack>
+      <Box className="project-links">
+        {link.map((url) => (
+          <a
+            className="project-link"
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={url}
+          >
+            {url}
+          </a>
+        ))}
+      </Box>
+    </Stack>
+  </Box>
+);
+
+const Portfolio = () => (
+  <PageSkeleton>
+    <Box>
+      <Box className="section-heading">
+        <Text className="eyebrow">Selected work</Text>
+        <Heading as="h1" className="section-title">
           My Projects
         </Heading>
-        <Stack direction={{ base: "column", lg: "row" }}>
-          <Flex flex={1} align="center" justify="center">
-            <PortfolioCard
-              header="Personal Profile"
-              subtext={["Built with Vite + ReactJS + TypeScript"]}
-              link={["https://github.com/Timothyw0/tim-website-react"]}
-            />
-          </Flex>
-          <Flex flex={1} align="center" justify="center">
-            <PortfolioCard
-              header="Wedding Website"
-              subtext={["Built with Vite + ReactJS + Google Firestore"]}
-              link={[
-                "https://github.com/Timothyw0/react-wedding",
-                "https://madeleineandtim2023.com",
-              ]}
-            />
-          </Flex>
-        </Stack>
-        <Stack direction={{ base: "column", lg: "row" }}>
-          <Flex flex={1} align="center" justify="center">
-            <PortfolioCard
-              header="Wang Family Tree"
-              subtext={[
-                "Built with Vite + ReactJS + TypeScript frontend",
-                "NodeJS + Express + MongoDB backend",
-              ]}
-              link={[
-                "https://github.com/Timothyw0/Wang-Family-Tree",
-                "https://wang-family-tree.web.app/",
-              ]}
-            />
-          </Flex>
-          <Flex flex={1} align="center" justify="center">
-            <PortfolioCard
-              header="Wedd.io"
-              subtext={[
-                "CS554 Final Project",
-                "MERN stack + AWS S3 + Google Firebase Authentication",
-              ]}
-              link={["https://github.com/JInsalaco/CS554_Good_Nodels"]}
-            />
-          </Flex>
-        </Stack>
-        <Stack direction={{ base: "column", lg: "row" }}>
-          <Flex flex={1} align="center" justify="center">
-            <PortfolioCard
-              header="Simple Shell (sish)"
-              subtext={[
-                "CS615 Final Project",
-                "Simple UNIX shell written in C",
-              ]}
-              link={["https://github.com/Timothyw0/apue-sish"]}
-            />
-          </Flex>
-          <Flex flex={1} align="center" justify="center">
-            <PortfolioCard
-              header="AWS EBS Backup"
-              subtext={[
-                "CS554 Assignment",
-                "Bash script that performs backups into an AWS EBS",
-              ]}
-              link={["https://github.com/Timothyw0/ebs-backup"]}
-            />
-          </Flex>
-        </Stack>
       </Box>
-    </PageSkeleton>
-  );
-};
+      <Box className="portfolio-grid">
+        {projects.map((project) => (
+          <PortfolioCard key={project.header} {...project} />
+        ))}
+      </Box>
+    </Box>
+  </PageSkeleton>
+);
 
 export default Portfolio;
