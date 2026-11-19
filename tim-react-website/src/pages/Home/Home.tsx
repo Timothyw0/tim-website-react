@@ -8,20 +8,18 @@ const Home = () => (
       <Box>
         <Text className="eyebrow">Personal profile</Text>
         <Heading as="h1" className="hero-title">
-          Welcome to my personal profile!
+          Software Engineer at Microsoft
         </Heading>
         <Box className="hero-copy">
           <Text>
-            I'm glad you're here, feel free to take a look around and reach out
-            with any questions in my contact links below in the footer.
+            I'm a software engineer at Microsoft working on Azure cloud
+            services. My experience spans Azure Static Web Apps and Azure
+            Container Apps, including GitHub Spark and ACA sandboxes.
           </Text>
           <Text>
-            I am a passionate and highly motivated full-stack software engineer
-            with experience in the MERN stack as well as C, Oracle, Spark, and
-            Python. I graduated from Rensselaer Polytechnic Institute in May
-            2019 with a B.S. in Computer Science and Minor in Management and
-            Stevens Institute of Technology in May 2022 with a M.S. in Computer
-            Science
+            I earned an M.S. in Computer Science from Stevens Institute of
+            Technology and a B.S. in Computer Science from Rensselaer
+            Polytechnic Institute.
           </Text>
         </Box>
       </Box>

@@ -1,7 +1,11 @@
 import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
-import { FaAws, FaNode, FaPython, FaReact } from "react-icons/fa";
-import { DiMongodb } from "react-icons/di";
-import { GrHadoop, GrOracle } from "react-icons/gr";
+import {
+  SiCsharp,
+  SiDocker,
+  SiDotnet,
+  SiKubernetes,
+  SiMicrosoftazure,
+} from "react-icons/si";
 import PageSkeleton from "../PageSkeleton";
 import Rpi from "../../assets/school/rpi.jpg";
 import Stevens from "../../assets/school/stevens.jpg";
@@ -21,6 +25,8 @@ const ExperienceCard = ({ header, subtext, type }: CardProps) => {
   let image: string | undefined;
   if (type === "education") {
     image = header === "Rensselaer Polytechnic Institute" ? Rpi : Stevens;
+  } else if (header === "Microsoft") {
+    image = "https://commons.wikimedia.org/wiki/Special:FilePath/Building92microsoft.jpg";
   } else if (header === "Bank of America") {
     if (subtext[0].includes("Software")) {
       image = BofaNyc;
@@ -42,8 +48,27 @@ const ExperienceCard = ({ header, subtext, type }: CardProps) => {
     >
       {image && (
         <Box className="experience-image-wrap">
-          <Image className="experience-image" src={image} alt={header} />
+          <Image
+            className="experience-image"
+            src={image}
+            alt={
+              header === "Microsoft"
+                ? "Building 92 at Microsoft's Redmond campus"
+                : header
+            }
+          />
         </Box>
+      )}
+      {header === "Microsoft" && (
+        <Text
+          as="a"
+          className="experience-image-credit"
+          href="https://commons.wikimedia.org/wiki/File:Building92microsoft.jpg"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Photo by Coolcaesar / Wikimedia Commons (CC BY-SA 4.0)
+        </Text>
       )}
       <Stack align="flex-start" spacing={3} pt={image ? 5 : 0}>
         <Heading className="experience-card-title" as="h3">
@@ -66,13 +91,11 @@ const ExperienceCard = ({ header, subtext, type }: CardProps) => {
 };
 
 const skills = [
-  { name: "React", icon: <FaReact size={32} /> },
-  { name: "Node.js", icon: <FaNode size={32} /> },
-  { name: "MongoDB", icon: <DiMongodb size={32} /> },
-  { name: "Python", icon: <FaPython size={32} /> },
-  { name: "AWS", icon: <FaAws size={32} /> },
-  { name: "Oracle", icon: <GrOracle size={32} /> },
-  { name: "Hadoop", icon: <GrHadoop size={32} /> },
+  { name: "Azure", icon: <SiMicrosoftazure size={32} /> },
+  { name: ".NET", icon: <SiDotnet size={32} /> },
+  { name: "C#", icon: <SiCsharp size={32} /> },
+  { name: "Docker", icon: <SiDocker size={32} /> },
+  { name: "Kubernetes", icon: <SiKubernetes size={32} /> },
 ];
 
 const Experience = () => (
@@ -85,6 +108,14 @@ const Experience = () => (
         </Heading>
       </Box>
       <Stack className="experience-grid" spacing={0}>
+        <ExperienceCard
+          header="Microsoft"
+          subtext={[
+            "Software Engineer · March 2024–Present",
+            "At Microsoft, I build large, distributed cloud systems that coordinate serverless PaaS deployments and services. I started with Azure Static Web Apps, part of App Service, then moved to Azure Container Apps. My current work focuses on GitHub Spark and ACA sandboxes, with Azure, .NET, C#, Docker, and Kubernetes among my core skills.",
+          ]}
+          type="work"
+        />
         <ExperienceCard
           header="Bank of America"
           subtext={[
