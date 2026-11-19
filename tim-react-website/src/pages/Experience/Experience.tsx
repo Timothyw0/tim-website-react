@@ -1,10 +1,18 @@
 import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import {
+  SiAzuredevops,
+  SiGit,
+  SiGnubash,
+  SiGo,
+  SiJavascript,
+  SiNodedotjs,
+  SiPowershell,
   SiCsharp,
   SiDocker,
   SiDotnet,
   SiKubernetes,
   SiMicrosoftazure,
+  SiTypescript,
 } from "react-icons/si";
 import PageSkeleton from "../PageSkeleton";
 import Rpi from "../../assets/school/rpi.jpg";
@@ -92,10 +100,18 @@ const ExperienceCard = ({ header, subtext, type }: CardProps) => {
 
 const skills = [
   { name: "Azure", icon: <SiMicrosoftazure size={32} /> },
+  { name: "Azure DevOps", icon: <SiAzuredevops size={32} /> },
   { name: ".NET", icon: <SiDotnet size={32} /> },
   { name: "C#", icon: <SiCsharp size={32} /> },
+  { name: "Go", icon: <SiGo size={32} /> },
+  { name: "TypeScript", icon: <SiTypescript size={32} /> },
+  { name: "JavaScript", icon: <SiJavascript size={32} /> },
+  { name: "Node.js", icon: <SiNodedotjs size={32} /> },
   { name: "Docker", icon: <SiDocker size={32} /> },
   { name: "Kubernetes", icon: <SiKubernetes size={32} /> },
+  { name: "Git", icon: <SiGit size={32} /> },
+  { name: "PowerShell", icon: <SiPowershell size={32} /> },
+  { name: "Bash", icon: <SiGnubash size={32} /> },
 ];
 
 const Experience = () => (
